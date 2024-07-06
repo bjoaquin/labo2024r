@@ -197,7 +197,7 @@ tabla_semillas <- fread( "./datasets//mis_semillas.txt" )
 ksemilla_azar <- tabla_semillas[ 1, semilla ]  # 1 es mi primer semilla
 
 # cargo los datos
-dataset <- fread("./datasets/dataset_pequeno.csv")
+dataset <- fread("~/datasets/dataset_pequeno.csv")
 # entreno en 202107
 dataset <- dataset[foto_mes==202107]
 

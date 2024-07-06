@@ -21,10 +21,10 @@ PARAM$experimento <- 3910
 # cambiar aqui por SUS corridas 
 #  segun lo que indica la  Planilla Colaborativa
 PARAM$corridas <- data.table( 
-  "cp" = c( -1, -1, -1, -1, -1, -1),
-  "minsplit" = c( 50, 100, 250, 500, 1000, 1000),
-  "minbucket" = c( 20, 50, 50, 20, 5, 50),
-  "maxdepth" = c( 6, 8, 8, 10, 10, 6 )
+  "cp" = c(-1),
+  "minsplit" = c(800),
+  "minbucket" = c(267),
+  "maxdepth" = c(6)
 )
 
 # parametros  arbol
