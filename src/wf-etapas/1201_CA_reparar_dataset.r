@@ -211,7 +211,8 @@ Corregir_MICE <- function(dataset) {
   library(mice)
   
   imputacion <- mice(data, maxit=50, method='cart', seed=500)
-  dataset <- complete(imputacion, 1)
+  pred_matrix <- imputacion$predictorMatrix
+  dataset <- complete(imputacion, pred = pred_matrix, 1)
 }
 #------------------------------------------------------------------------------
 # Aqui empieza el programa
