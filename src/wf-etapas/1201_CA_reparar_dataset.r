@@ -210,9 +210,9 @@ Corregir_MICE <- function(dataset) {
   # Carga de paquete
   library(mice)
   
-  imputacion <- mice(as.data.frame(data), maxit=50, method='cart', seed=500)
+  imputacion <- mice(dataset, maxit=50, method='cart', seed=500)
   pred_matrix <- imputacion$predictorMatrix
-  dataset <- as.data.table(complete(imputacion, pred = pred_matrix, 1))
+  dataset <- complete(imputacion, pred = pred_matrix, 1)
 }
 #------------------------------------------------------------------------------
 # Aqui empieza el programa
