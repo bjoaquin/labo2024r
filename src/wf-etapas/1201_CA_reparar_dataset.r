@@ -206,7 +206,7 @@ Corregir_MICE <- function(dataset) {
   cat( "inicio Corregir_MICE()\n")
   
   # Instalación de paquete (en caso de que sea necesario)
-  if(!("mice" %in% installed.packages())) install.packages("mice")
+  if(!("mice" %in% installed.packages())) install.packages("mice", repos = "http://cran.us.r-project.org")
   # Carga de paquete
   library(mice)
   
