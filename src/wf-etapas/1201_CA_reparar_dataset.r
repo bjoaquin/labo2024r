@@ -205,6 +205,8 @@ Corregir_MachineLearning <- function(dataset) {
 Corregir_MICE <- function(dataset) {
   cat( "inicio Corregir_MICE()\n")
   
+  Corregir_MachineLearning(dataset)
+  
   # Instalación de paquete (en caso de que sea necesario)
   if(!("mice" %in% installed.packages())) install.packages("mice", repos = "http://cran.us.r-project.org")
   # Carga de paquete
