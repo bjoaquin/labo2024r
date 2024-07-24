@@ -226,12 +226,16 @@ CorregirCampoMes_MICE <- function(pcampo, pmeses) {
   meth[names(meth) == pcampo] <- "sample"
   imputacion <- mice(dataset, method = meth, maxit = 5, m = 1, seed = 7)
   tbl <- mice::complete(dataset)
-  numcol <- which(names(meth) == pcampo)
   
-  dataset[, paste0(pcampo) := ifelse(foto_mes %in% pmeses, tbl[, numcol], get(pcampo))]
+  dataset[, paste0(pcampo) := ifelse(foto_mes %in% pmeses, tbl[, get(pcampo)], get(pcampo))]
 }
 #------------------------------------------------------------------------------
 Corregir_MICE <- function(dataset) {
+  
+  # Instalar paquete (en caso de ser necesario)
+  if(!("mice" %in% installed.packages())) install.packages("mice", repos = "http://cran.us.r-project.org")
+  # Carga de paquete
+  library(mice)
   
   # se aplica previo la asignacion de NA por como funciona mice
   
