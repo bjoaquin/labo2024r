@@ -224,7 +224,7 @@ CorregirCampoMes_MICE <- function(pcampo, pmeses) {
   meth <- rep("", ncol(dataset))
   names(meth) <- colnames(dataset)
   meth[names(meth) == pcampo] <- "sample"
-  imputacion <- mice(dataset, method = meth, maxit = 5, m = 1, seed = 7)
+  imputacion <- mice(dataset, method = meth, maxit = 1, m = 1, seed = 7)
   tbl <- mice::complete(dataset)
   
   dataset[, paste0(pcampo) := ifelse(foto_mes %in% pmeses, tbl[, get(pcampo)], get(pcampo))]
@@ -385,6 +385,19 @@ Corregir_MICE <- function(dataset) {
 
 #------------------------------------------------------------------------------
 
+Corregir_MLEC <- function(dataset) {
+  gc()
+  cat( "inicio Corregir_MLEC()\n")
+  
+  Corregir_MachineLearning(dataset)
+  
+  Corregir_EstadisticaClasica(dataset)
+  
+  cat( "fin Corregir_MLEC()\n")
+}
+
+#------------------------------------------------------------------------------
+
 # Aqui empieza el programa
 cat( "z1202_CA_reparar_dataset.r  START\n")
 action_inicializar() 
@@ -415,6 +428,7 @@ switch( envg$PARAM$metodo,
   "MachineLearning"     = Corregir_MachineLearning(dataset),
   "EstadisticaClasica"  = Corregir_EstadisticaClasica(dataset),
   "MICE"                = Corregir_MICE(dataset),
+  "MLEC"                = Corregir_MLEC(dataset),
   "Ninguno"             = cat("No se aplica ninguna correccion.\n"),
 )
 
